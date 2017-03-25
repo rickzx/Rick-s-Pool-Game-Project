@@ -1,0 +1,15 @@
+For the graphic part, the greatest challenge is the animation. The game should be able to accurately display all the animations of the pool balls, as well as rotation of the cue, magnitude of the power bar, spins of balls and updating game status. I’ve used the pygame module and pygame.sprite class to solve the problem. The pygame.sprite class has a layering feature, so that it can correctly layer everything in order. In each class of object, the code includes a self.image and self.rect to indicates the image and position of the object. When the game clock ticks, pygame.sprite will automatically run the update function within each class of object, and do all the animations.
+
+For the collision part, the greatest challenge is to correctly calculate the resulting angle and speed of collided balls. Pygame.sprite class has a collide function to detect the collision, which is not very accurate. So I’ve used vectors and trigonal mathematics to solve for the equations. Physical momentum has also been taking into consideration. After building the optimized physics engine, some corrections have to be made because of the inaccuracy of collision function.
+
+For the AI part, algorithms are quite complicated. Basically, the computer will find the nearest unblocked ball and shoot it into the nearest proper hole(which is unblocked and has a angle possible to shoot). When checking for blocked balls, a ray is created starting from the cue ball. If the ray does not collide with any other balls, then it’s unblocked. I’ve used an approach similar to back-tracking to choose the best ball and the best hole. And I code for the shooting power by taking distance and angle into consideration. The AI should also be able to identify its ball type(solid,stripe,black). So I group all the balls and detect the group of the ball when making a shot.
+
+For the game logic part. I’m able to detect a foul when the player shoots the cue ball into the pocket or touches opponent’s ball before touching his own ball. When the player shoots the black 8 into the pocket, the game will end and computer will win. When the player shoots opponent’s ball into the pocket, opponent will score and get his turn.
+
+I’ve made four game loops to navigate through start screen, shop screen, game screen and game ending screen. Buttons are transparent and can interact with mouse motion. I’m able to do this by setting the alpha value of the surface.
+
+For the 1on1 part, I identify the 2nd player as the computer, but turning off the AI feature. This approach saves a lot of codes so that the 2nd player can directly use the same game logic as the computer.
+
+All of my design is completely original, including the user interface and game controls.
+
+
